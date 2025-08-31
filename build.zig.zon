@@ -3,8 +3,7 @@
     .fingerprint = 0xba7766d3af0dc934,
     .version = "0.15.1",
     .paths = .{
-        "include",
-        "src",
+        "c",
         "build.zig",
         "build.zig.zon",
         "LICENSE.txt",
@@ -12,7 +11,5 @@
         "update.sh",
         "verify.sh",
     },
-    .dependencies = .{
-        
-    },
+    .dependencies = .{},
 }
