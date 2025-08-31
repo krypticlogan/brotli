@@ -4,13 +4,14 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const lib = b.addStaticLibrary(.{
+    const lib = b.addLibrary(.{
         .name = "brotli",
-        .target = target,
-        .optimize = optimize,
+        .root_module = b.createModule(.{
+            .target = target,
+            .optimize = optimize,
+            .link_libc = true
+        })
     });
-
-    lib.linkLibC();
     lib.addIncludePath(b.path("c/include"));
     lib.addCSourceFiles(.{ .files = &sources, .flags = &.{} });
     lib.installHeadersDirectory(b.path("c/include/brotli"), "brotli", .{});
